@@ -6,7 +6,7 @@ import plotly.express as px
 import prophet
 from prophet.plot import plot_plotly
 from plotly.subplots import make_subplots
-import random
+from streamlit_option_menu import option_menu
 
 #Constants
 START = "2000-01-01"
@@ -25,6 +25,13 @@ with st.sidebar:
     selected_stock = st.selectbox('Select dataset for prediction', stocks)
     n_years = st.slider('Years of prediction:', 1, 4)
     period = n_years * 365
+    app = option_menu (
+                menu_title='About',
+                options=['Home','Account','Trending','Your Posts','about'],
+                icons=['house-fill','person-circle','trophy-fill','chat-fill','info-circle-fill'],
+                menu_icon='chat-text-fill',
+                default_index=1,
+)
     
 # data loading and creating dataframe
 def load_data(ticker):
